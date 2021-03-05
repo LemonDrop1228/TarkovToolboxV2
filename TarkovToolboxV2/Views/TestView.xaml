@@ -37,14 +37,14 @@
                         </Grid>
                     </Border>
                     <Border Grid.Column="2" Background="#191B1B">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top"> 
+                        <StackPanel x:Name="ViewWindowControlsStackPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top"> 
                         <Border x:Name="SettingsBorderButton"  Height="24" Width="24" Padding="0 2 2 0" MouseLeftButtonUp="SettingsBorderButton_MouseLeftButtonUp">
                             <Grid>
                                 <Image Source="../Images/WindowButtonBG.png" Stretch="Fill"/>
                                 <materialDesign:PackIcon Kind="Gear" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFDADADA"/>
                             </Grid>
                         </Border>
-                        <Border  Height="24" Width="24" Padding="0 2 2 0" MouseLeftButtonUp="VisibilityBorderButton_MouseLeftButtonUp">
+                        <Border x:Name="VisibilityBorder"  Height="24" Width="24" Padding="0 2 2 0" MouseLeftButtonUp="VisibilityBorderButton_MouseLeftButtonUp">
                             <Grid>
                                 <Image Source="../Images/WindowButtonBG.png" Stretch="Fill"/>
                                 <materialDesign:PackIcon Kind="eye" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFDADADA"/>
@@ -66,7 +66,7 @@
                     <Grid x:Name="ContentGrid">
                         <!--Window Content Goes HERE-->
                         <!--#region -->
-                        <Border x:Name="BrowserContainerBorder">
+                        <Border x:Name="MainContainerBorder">
                             
                         </Border>
                         

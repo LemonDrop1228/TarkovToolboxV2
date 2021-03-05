@@ -47,7 +47,6 @@ namespace TarkovToolboxV2
 
         public MainWindow()
         {
-            
             InitializeComponent();
 
             ViewState = new List<ViewState>() {
@@ -212,6 +211,12 @@ namespace TarkovToolboxV2
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if (!Properties.Settings.Default.FirstRun)
+            {
+                Properties.Settings.Default.FirstRun = false;
+                Properties.Settings.Default.Reload();
+            }
+
             if (TrayIcon != null)
             {
                 TrayIcon.Visible = false;

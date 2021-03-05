@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("TarkovToolboxV2")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Bangarang Games")]
 [assembly: AssemblyProduct("TarkovToolboxV2")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]

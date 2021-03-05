@@ -45,6 +45,21 @@
                     TitleIcon="../Images/icon_info.png"
                     ContentUrl="https://escapefromtarkov.gamepedia.com/Escape_from_Tarkov_Wiki"/>
                 <!--Wiki-->
+
+                <!--Welcome-->
+                <views:TestView x:Name="WelcomeView" 
+                    MinWidth="450" 
+                    MinHeight="250" 
+                    Width="960" Height="540"
+                    TitleText="Welcome"
+                    TitleIcon="../Images/icon_barter_tools.png"
+                    CanSpecialResize="False"
+                    UsesMessage="True" MessageSource="Images/TTv2_WelcomeScreen.png"
+                    StartCentered="True"
+                    isBrowserBasedView="False"
+                    ShowOnce="True"
+                    />
+                <!--Welcome-->
             </Canvas>
         </Grid>
     </Border>

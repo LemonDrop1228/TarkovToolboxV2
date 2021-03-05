@@ -32,17 +32,42 @@ namespace TarkovToolboxV2.Views
 
         [JsonIgnore()]
         public ChromiumWebBrowser cBrowser { get; set; }
-
+        public bool CanSpecialResize { get; set; } = true;
+        public bool isBrowserBasedView { get; set; } = true;
 
         public delegate void ViewClosedEventHandler(BaseView senderView);
         public event ViewClosedEventHandler ViewClosed;
+        Image ImageMessage { get; set; } = new Image();
+        public bool UsesMessage { get; set; }
+        public bool StartCentered { get; set; }
+        public bool ShowOnce { get; set; }
 
+
+        public ImageSource MessageSource { get => ImageMessage.Source; set => ImageMessage.Source = value; }
 
         public TestView()
         {
             this.DataContext = this;
             InitializeComponent();
+
             this.Visibility = Visibility.Hidden;
+        }
+
+        private void PostInit()
+        {
+            if (ShowOnce && Properties.Settings.Default.FirstRun)
+                this.Visibility = Visibility.Visible;
+
+            if (UsesMessage)
+                MainContainerBorder.Child = ImageMessage;
+            if (StartCentered)
+            {
+                double Left = (((this.Parent as Canvas).ActualWidth / 2) - this.ActualWidth / 2);
+                Canvas.SetLeft(this, Left);
+
+                double Top = (((this.Parent as Canvas).ActualHeight / 2) - this.ActualHeight / 2);
+                Canvas.SetTop(this, Top);
+            }
         }
 
         #region BaseCalls
@@ -67,12 +92,20 @@ namespace TarkovToolboxV2.Views
                 this.canvas = Parent as Canvas;
             if (TitleBorder != null)
                 this.Title = TitleBorder;
-            cBrowser.IsBrowserInitializedChanged += CBrowser_IsBrowserInitializedChanged;
+
+            if(isBrowserBasedView)
+                cBrowser.IsBrowserInitializedChanged += CBrowser_IsBrowserInitializedChanged;
+
+
+            if (!CanSpecialResize)
+                ViewWindowControlsStackPanel.Children.Remove(VisibilityBorder);
+            
+            PostInit();
         }
 
         private void CBrowser_IsBrowserInitializedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            BrowserContainerBorder.Child = cBrowser;
+            MainContainerBorder.Child = cBrowser;
             if (cBrowser.IsBrowserInitialized)
                 cBrowser.Load(ContentUrl);
         }
@@ -118,7 +151,8 @@ namespace TarkovToolboxV2.Views
         {
             this.Visibility = Visibility.Hidden;
 
-            this.ViewClosed(this);
+            if(!UsesMessage)
+                this.ViewClosed(this);
         }
     }
 }
