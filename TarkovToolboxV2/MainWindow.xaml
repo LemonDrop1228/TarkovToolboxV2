@@ -1,0 +1,51 @@
+﻿<Window x:Name="MainWindow1" x:Class="TarkovToolboxV2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TarkovToolboxV2" xmlns:views="clr-namespace:TarkovToolboxV2.Views"
+        mc:Ignorable="d"
+        Title="TarkovToolboxV2" Height="721.5" Width="1250" AllowsTransparency="True" WindowStyle="None" Margin="0" Background="Transparent" Topmost="True" WindowState="Maximized" Closing="Window_Closing" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" Loaded="MainWindow1_Loaded">
+    <Border BorderBrush="Red" BorderThickness="2">
+        <Grid>
+            <Canvas>
+                <!--Maps-->
+                <views:TestView x:Name="MapView" 
+                    MinWidth="450" 
+                    MinHeight="250" 
+                    Width="450" Height="250" 
+                    Canvas.Left="0" 
+                    Canvas.Top="0"
+                    TitleText="Maps"
+                    TitleIcon="../Images/icon_maps.png"
+                    ContentUrl="https://mapgenie.io/tarkov"/>
+                <!--Maps-->
+
+
+                <!--Market-->
+                <views:TestView x:Name="MarketView" 
+                    MinWidth="450" 
+                    MinHeight="250" 
+                    Width="450" Height="250" 
+                    Canvas.Left="0" 
+                    Canvas.Top="200"
+                    TitleText="Flea Market"
+                    TitleIcon="../Images/icon_money.png"
+                    ContentUrl="https://tarkov-market.com/"/>
+                <!--Market-->
+
+                <!--Wiki-->
+                <views:TestView x:Name="WikiView" 
+                    MinWidth="450" 
+                    MinHeight="250" 
+                    Width="450" Height="250" 
+                    Canvas.Left="0" 
+                    Canvas.Top="400"
+                    TitleText="WiKi"
+                    TitleIcon="../Images/icon_info.png"
+                    ContentUrl="https://escapefromtarkov.gamepedia.com/Escape_from_Tarkov_Wiki"/>
+                <!--Wiki-->
+            </Canvas>
+        </Grid>
+    </Border>
+</Window>
